@@ -12,31 +12,41 @@ public class Calculator {
 			System.out.println("Please enter the binary number : ");
 		    long num = scan1.nextLong();
 
-		    // call method and giving the binary number
+		    // call function and giving the binary number
 		    int decimal = convertBinaryToDecimal(num);
 		    System.out.println("Number in decimal is  = " + decimal);
-		    
+		    // calling function converter to turn the value into a string
 		    int[] num1 = converter(decimal);
-		    
+		    //call function for printing the number out in a digital format
 		    degitalFormat(num1);
 		    
 		  }
-
+			//convert the number to decimal
 		  public static int convertBinaryToDecimal(long num) {
 		    int decimalNumber = 0, i = 0;
 		    long remainder;
-		    
+		    //the binary number will be modules by 10 so the first number in the right is taken then multiplied by the 2 to the power of loop counter which represent the place of the binary number
 		    while (num != 0) {
 		      remainder = num % 10;
 		      num /= 10;
-		      decimalNumber += remainder * Math.pow(2, i);
+		      decimalNumber += remainder * power(i);
 		      i++;
 		    }
 		    
 		    return decimalNumber;
 		  }
+		  //function that takes the loop counter which represent the place of the number taken
+		  public static int power(int position) {
+				int result = 1;
+				for (int i = 0; i < position; ++i) {
+					result *= 2;
+				}
+				// System.out.println(result);
+				return result;
+			
+		  }
 		
-		
+		//this function will convert the data type long to array of integers
 		static int[] converter(long num) {
 			String str = Long.toString(num);
 			int arrLen = str.length();
@@ -51,7 +61,7 @@ public class Calculator {
 			return number;
 		}
 			    
-			    
+		//this function will take  the array and print it out in the digital format	    
 		static void degitalFormat(int[] number) {    
 				
 			String [][] num=new String[10][4];
@@ -86,9 +96,9 @@ public class Calculator {
 	        num[5][3]="    ";
 
 	        num[6][0]=" _ ";
-	        num[6][1]="|  ";
-	        num[6][2]=" - ";
-	        num[6][3]="|_|";
+	        num[6][1]="|_ ";
+	        num[6][2]="|_|";
+	        num[6][3]="   ";
 	        
 	        
 	        num[7][0]=" _ ";
@@ -107,19 +117,21 @@ public class Calculator {
 	        num[9][3]="   ";
 
 	      
-	        for (int line = 0; line < 4; line++)
+	        for (int col = 0; col < 4; col++)
 	        {          
-	            for (int inputI=0; inputI < number.length; inputI++)
+	            for (int row=0; row < number.length; row++)
 	            {
-	                int value = number[inputI];
-	                System.out.print(num[value][line]);
+	                int value = number[row];
+	                System.out.print(num[value][col]);
 	                System.out.print("  ");
 	            }          
 	            System.out.println();
 	        }
 	    }
 	}
-
+		/*this loop will represent the columns and the inner one will represent the row and the row in the matrix will represent the number that is wanted to print
+		 the loop will print the first column of each number then move to the second column and then keep doing this until the whole number is printed
+		 */
 	
 			
 			
