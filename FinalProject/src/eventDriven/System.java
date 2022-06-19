@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
 
 public class System {
 
@@ -80,7 +81,14 @@ public class System {
         bt2.setBounds(225, 300, 100, 40);
        
         
-        
+        bt1.addActionListener(new ActionListener() {
+        	
+        	
+        	public void actionPerformed(ActionEvent e) {
+        		
+        			
+        	}
+        });
         
        
         
